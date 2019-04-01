@@ -1,4 +1,4 @@
-package com.shenzhen.myself_project2;
+package com.shenzhen.demo;
 
 import org.junit.Test;
 

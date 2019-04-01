@@ -1,4 +1,4 @@
-package com.shenzhen.myself_project2;
+package com.shenzhen.demo;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
