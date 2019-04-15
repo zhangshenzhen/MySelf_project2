@@ -12,6 +12,7 @@ import com.shenzhen.demo.fragment.FragmentA;
 import com.shenzhen.demo.fragment.FragmentB;
 import com.shenzhen.demo.fragment.FragmentC;
 import com.shenzhen.demo.fragment.FragmentD;
+import com.shenzhen.demo.fragment.FragmentTest;
 
 
 import butterknife.BindView;
@@ -47,11 +48,12 @@ public  class HomeActivity extends MyBaseActivivty  implements ViewPager.OnPageC
     @Override
     protected void initData() {
         mPagerAdapter = new BaseFragmentAdapter<>(this);
+
         mPagerAdapter.addFragment(FragmentA.newInstance());
         mPagerAdapter.addFragment(FragmentB.newInstance());
         mPagerAdapter.addFragment(FragmentC.newInstance());
         mPagerAdapter.addFragment(FragmentD.newInstance());
-
+        mPagerAdapter.addFragment(FragmentTest.newInstance());//测试
         mViewPager.setAdapter(mPagerAdapter);
 
         // 限制页面数量
@@ -84,6 +86,9 @@ public  class HomeActivity extends MyBaseActivivty  implements ViewPager.OnPageC
              case 3:
                  mBottomNavigationView.setSelectedItemId(R.id.home_me);
                  break;
+             case 4: //测试
+                 mBottomNavigationView.setSelectedItemId(R.id.menu_test);
+                 break;
          }
      }
 
@@ -110,6 +115,12 @@ public  class HomeActivity extends MyBaseActivivty  implements ViewPager.OnPageC
                  //mViewPager.setCurrentItem(3);
                  //mViewPager.setCurrentItem(3, false);
                  mViewPager.setCurrentItem(3, mViewPager.getCurrentItem() == 2);
+                 return true;
+                 //测试
+             case R.id.menu_test:
+                 //mViewPager.setCurrentItem(3);
+                 //mViewPager.setCurrentItem(3, false);
+                 mViewPager.setCurrentItem(4, mViewPager.getCurrentItem() == 1 || mViewPager.getCurrentItem() == 3|| mViewPager.getCurrentItem() == 2);
                  return true;
          }
          return false;

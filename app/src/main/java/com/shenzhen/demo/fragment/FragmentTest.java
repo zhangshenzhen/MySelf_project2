@@ -1,11 +1,9 @@
 package com.shenzhen.demo.fragment;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.Context;
-import android.os.Build;
-import android.os.Handler;
-import android.os.Message;
+
+import android.icu.text.DateFormat;
+import android.icu.text.SimpleDateFormat;
+import android.provider.ContactsContract;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -14,18 +12,19 @@ import android.widget.TextView;
 import com.gyf.barlibrary.ImmersionBar;
 import com.hjq.bar.TitleBar;
 import com.shenzhen.demo.R;
-import com.shenzhen.demo.activity.HomeActivity;
 import com.shenzhen.demo.base.MyBaseFragment;
 import com.shenzhen.demo.widget.XCollapsingToolbarLayout;
 
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.LinkedHashMap;
-import java.util.Map;
+
+import java.io.IOException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Date;
+import java.util.concurrent.Callable;
 
 import butterknife.BindView;
 
-public class FragmentA  extends MyBaseFragment implements XCollapsingToolbarLayout.OnScrimsListener {
+public class FragmentTest extends MyBaseFragment implements XCollapsingToolbarLayout.OnScrimsListener {
 
     @BindView(R.id.abl_test_bar)
     AppBarLayout mAppBarLayout;
@@ -41,19 +40,21 @@ public class FragmentA  extends MyBaseFragment implements XCollapsingToolbarLayo
     @BindView(R.id.tv_test_search)
     TextView mSearchView;
 
-    public static FragmentA newInstance() {
-        return new FragmentA();
+    public static FragmentTest newInstance() {
+        return new FragmentTest();
     }
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_test_a;
+        return R.layout.fragment_test_test;
     }
 
     @Override
     protected int getTitleBarId() {
         return R.id.tb_test_a_bar;
     }
+
+
 
     @Override
     protected void initView() {
@@ -66,8 +67,11 @@ public class FragmentA  extends MyBaseFragment implements XCollapsingToolbarLayo
 
     @Override
     protected void initData() {
-
+     currentTime();
     }
+
+
+
 
     @Override
     public boolean isStatusBarEnabled() {
@@ -86,6 +90,7 @@ public class FragmentA  extends MyBaseFragment implements XCollapsingToolbarLayo
     @Override
     public void onScrimsStateChange(boolean shown) {
         // CollapsingToolbarLayout 发生了渐变
+        Log.i("shown=",""+shown);
         if (shown) {
             mAddressView.setTextColor(getResources().getColor(R.color.black));
             mSearchView.setBackgroundResource(R.drawable.bg_home_search_bar_gray);
@@ -97,38 +102,57 @@ public class FragmentA  extends MyBaseFragment implements XCollapsingToolbarLayo
         }
     }
 
-    //@TargetApi(23)
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        Log.i("gps", "版本兼容Context ：" + Build.VERSION.SDK_INT);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            onAttachToContext(context);
-        }
+    private void currentTime() {
+        Log.i(" : shown= >>> ", Thread.currentThread().getName());
+
+        //获取网络时间
+        new Thread(){
+            @Override
+            public void run() {
+                try {
+                 getNetWorkTime();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+    }
+  /*说明激励的作用：
+
+  *
+  * */
+    /*
+    * 获取当前的网络时间
+    * */
+    private long getNetWorkTime() throws IOException {
+        URL url=new URL("http://www.baidu.com") ;
+        URLConnection conn = url.openConnection();
+        conn.connect();
+        long dateL=conn.getDate();
+        Date date=new Date(dateL);
+        java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
+        Log.i(dateL+" : shown=", Thread.currentThread().getName()+""+df.format(date) );
+       return dateL;
     }
 
-   // @SuppressWarnings("deprecation")
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        Log.i("gps", "版本兼容activity ：" + Build.VERSION.SDK_INT);
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-           onAttachToContext(activity);
-        }
-    }
-
-    private void onAttachToContext(Context context){
-        HomeActivity mainActivity = (HomeActivity) context;
-         Map map = new Hashtable();
-
-
-         long lasttime = Long.parseLong(String.valueOf(System.currentTimeMillis()).toString().substring(0, 10));
-         Log.i("gps", System.currentTimeMillis()+"版本兼容调用了  : "+lasttime );
-    }
-    public Handler handler = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-        }
-    };
+   /*
+   * aaDBb
+   * BAbAB
+   * DBCcC       +10
+   *
+   * ABC         +6
+   * ABCE
+   * ACDE    abcd
+   * ABCD    cde
+   * BCDE
+   *
+   * X          +12
+   * v
+   * X
+   * V      x
+   * V
+   *
+   *
+   * */
 }
+
