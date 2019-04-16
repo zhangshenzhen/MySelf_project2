@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -13,6 +13,23 @@
         <item name="android:windowNoTitle">true</item>
 
     </style>
+
+
+    <style name="FruitActivityTheme" parent="AppTheme2">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+    <style name="AppTheme2" parent="AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="FullTheme" parent="AppTheme">
+        <item name="android:windowNoTitle">true</item>
+        <!--<item name="android:windowFullscreen">true</item>-->
+    </style>
+
 
     <style name="txt">
         <item name="android:layout_width">wrap_content</item>
@@ -49,5 +66,7 @@
             <enum name="italic_bold" value="3"/>
         </attr>
     </declare-styleable>
+
+
 
 </resources>

@@ -4,9 +4,16 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.shenzhen.textview.utils.Format;
@@ -41,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         setContentView(R.layout.activity_main);
 
-      /*  toolbar = findViewById(R.id.toobar);
+        toolbar = findViewById(R.id.toobar);
         //把布局中的Toolbar当作ActionBar
         setSupportActionBar(toolbar);    //必须把主题设置会为 NoActionbar
         //设置图标
@@ -52,13 +59,36 @@ public class MainActivity extends AppCompatActivity {
         //标题颜色
         toolbar.setTitleTextColor(Color.parseColor("#ff0000"));
         //设置副标题
-        toolbar.setSubtitle(Format.fomartdate(System.currentTimeMillis()+""));
+        toolbar.setSubtitle(Format.fomartdate(System.currentTimeMillis() + ""));
         //设置返回键 二选一
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //返回按钮
-       // toolbar.setNavigationIcon(R.mipmap.back);*/
+        // toolbar.setNavigationIcon(R.mipmap.back);*/
 
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
+        CollapsingToolbarLayout collapsingToolbar =
+                (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        //要使用setSupportActionBar();
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+        // collapsingToolbar.setTitle(fruitName);
+        AppBarLayout appbar = findViewById(R.id.appbar);
+        final FloatingActionButton FloatingActionButton = findViewById(R.id.FloatingActionButton);
+        appbar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                Log.d("移动",":"+verticalOffset);                                                                                          //8.0f 修改简便灵敏度
+                toolbar.setBackgroundColor(changeAlpha(getResources().getColor(R.color.colorPrimary), Math.abs(verticalOffset * 1.0f) /(8.0f* appBarLayout.getTotalScrollRange())));
+                toolbar.setTitleTextColor(changeAlpha(getResources().getColor(R.color.colorBlack), Math.abs(verticalOffset * 1.0f) /(1.0f* appBarLayout.getTotalScrollRange())));
+
+                //动态修改悬浮按钮大小
+                //FloatingActionButton.setCustomSize(FloatingActionButton.getSize()*verticalOffset/appBarLayout.getTotalScrollRange());
+            }
+        });
 
         mTvBanner = findViewById(R.id.tv_banner);
         mTvBanner1 = findViewById(R.id.tv_banner1);
@@ -66,6 +96,19 @@ public class MainActivity extends AppCompatActivity {
         mTvBanner3 = findViewById(R.id.tv_banner3);
         mTvBanner4 = findViewById(R.id.tv_banner4);
     }
+
+    /**
+     * 根据百分比改变颜色透明度
+     */
+    public int changeAlpha(int color, float fraction) {
+        int red = Color.red(color);
+        int green = Color.green(color);
+        int blue = Color.blue(color);
+        int alpha = (int) (Color.alpha(color) * fraction);
+        return Color.argb(alpha, red, green, blue);
+    }
+
+
 
     private void initData() {
         mList = new ArrayList<>();
@@ -89,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
          * 设置数据（带图标的数据），方式二
          */
         //第一个参数：数据 。第二参数：drawable.  第三参数drawable尺寸。第四参数图标位置
-        mTvBanner4.setDatasWithDrawableIcon(mList,drawable,18, Gravity.LEFT);
+        mTvBanner4.setDatasWithDrawableIcon(mList, drawable, 18, Gravity.LEFT);
 
     }
 
@@ -97,35 +140,35 @@ public class MainActivity extends AppCompatActivity {
         mTvBanner.setItemOnClickListener(new ITextBannerItemClickListener() {
             @Override
             public void onItemClick(String data, int position) {
-                Toast.makeText(MainActivity.this, String.valueOf(position)+">>"+data, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, String.valueOf(position) + ">>" + data, Toast.LENGTH_SHORT).show();
             }
         });
 
         mTvBanner1.setItemOnClickListener(new ITextBannerItemClickListener() {
             @Override
             public void onItemClick(String data, int position) {
-                Toast.makeText(MainActivity.this, String.valueOf(position)+">>"+data, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, String.valueOf(position) + ">>" + data, Toast.LENGTH_SHORT).show();
             }
         });
 
         mTvBanner2.setItemOnClickListener(new ITextBannerItemClickListener() {
             @Override
             public void onItemClick(String data, int position) {
-                Toast.makeText(MainActivity.this, String.valueOf(position)+">>"+data, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, String.valueOf(position) + ">>" + data, Toast.LENGTH_SHORT).show();
             }
         });
 
         mTvBanner3.setItemOnClickListener(new ITextBannerItemClickListener() {
             @Override
             public void onItemClick(String data, int position) {
-                Toast.makeText(MainActivity.this, String.valueOf(position)+">>"+data, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, String.valueOf(position) + ">>" + data, Toast.LENGTH_SHORT).show();
             }
         });
 
         mTvBanner4.setItemOnClickListener(new ITextBannerItemClickListener() {
             @Override
             public void onItemClick(String data, int position) {
-                Toast.makeText(MainActivity.this, String.valueOf(position)+">>"+data, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, String.valueOf(position) + ">>" + data, Toast.LENGTH_SHORT).show();
             }
         });
     }
