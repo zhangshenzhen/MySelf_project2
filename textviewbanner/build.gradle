@@ -6,7 +6,7 @@ android {
 
 
     defaultConfig {
-        applicationId "com.shenzhen.textview"
+        applicationId "com.bjypt.vipcard" //"com.shenzhen.textview"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
@@ -34,6 +34,13 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     //implementation project(':Ltextbannerlibrary')
     implementation 'com.android.support:design:28.0.0'
+    implementation files('libs/alipaySdk-20151112.jar')
+    implementation files('libs/ShareSDK-Wechat-Core-2.7.4.jar')
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+    implementation files('libs/httpcore-4.3.2.jar')
+
+
+    implementation 'com.github.paradoxie:AutoVerticalTextview:0.1'
 }
 
 /*publish {

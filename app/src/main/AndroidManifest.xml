@@ -47,6 +47,8 @@
          <meta-data
              android:name="UMENG_CHANNEL"
              android:value="${UMENG_CHANNEL_VALUE}" />-->
+
+        <activity android:name=".activity.TestActivity"/>
     </application>
 
 </manifest>

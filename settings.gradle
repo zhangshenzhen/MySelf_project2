@@ -1,1 +1,1 @@
-include ':app', ':checkupdate', ':textviewbanner'
+include ':app', ':checkupdate', ':textviewbanner', ':myapplication', ':cirquecontrolview'

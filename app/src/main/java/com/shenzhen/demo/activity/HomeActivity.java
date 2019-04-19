@@ -1,9 +1,12 @@
 package com.shenzhen.demo.activity;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.shenzhen.demo.R;
 import com.shenzhen.demo.base.BaseFragmentAdapter;
@@ -14,6 +17,10 @@ import com.shenzhen.demo.fragment.FragmentC;
 import com.shenzhen.demo.fragment.FragmentD;
 import com.shenzhen.demo.fragment.FragmentTest;
 
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 
@@ -26,7 +33,14 @@ public  class HomeActivity extends MyBaseActivivty  implements ViewPager.OnPageC
     private BaseFragmentAdapter mPagerAdapter;
 
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
     protected int getLayoutId() {
+
         return R.layout.activity_home;
     }
 
@@ -140,4 +154,11 @@ public  class HomeActivity extends MyBaseActivivty  implements ViewPager.OnPageC
         // 不使用侧滑功能
         return !super.isSupportSwipeBack();
     }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(String s) {
+        Log.d( "home结束了", "..."+Toast.LENGTH_SHORT);
+        finish();
+    }
+
  }

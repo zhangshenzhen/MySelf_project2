@@ -82,5 +82,5 @@ dependencies {
     // 第三方支付：https://github.com/getActivity/RxPay
 
     // Log 打印：https://github.com/JakeWharton/timber
-
+    implementation 'org.greenrobot:eventbus:3.0.0'
 }

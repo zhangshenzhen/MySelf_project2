@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.hjq.toast.ToastUtils;
 import com.shenzhen.demo.R;
+import com.shenzhen.demo.activity.TestActivity;
 import com.shenzhen.demo.base.MyBaseFragment;
 
 import butterknife.OnClick;
@@ -47,6 +48,8 @@ public class FragmentD extends MyBaseFragment {
     @OnClick({R.id.btn_test_dialog, R.id.btn_test_login, R.id.btn_test_register, R.id.btn_test_forget, R.id.btn_test_reset,
             R.id.btn_test_setting, R.id.btn_test_about, R.id.btn_test_browser, R.id.btn_test_pay})
     public void onClick(View v) {
+        startActivity(TestActivity.class);
+
        /* switch (v.getId()) {
             case R.id.btn_test_dialog:
                 startActivity(DialogActivity.class);
