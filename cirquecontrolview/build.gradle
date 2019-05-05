@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'img-optimizer'
 android {
     compileSdkVersion 25
     buildToolsVersion '27.0.3'
@@ -26,4 +26,9 @@ dependencies {
     })
     implementation 'com.android.support:appcompat-v7:25.3.1'
     testImplementation 'junit:junit:4.12'
+}
+optimizerOptions {
+    triggerSize 5
+    type "lossy"
+    //suffix "_opt"
 }

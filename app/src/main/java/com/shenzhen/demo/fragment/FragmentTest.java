@@ -101,7 +101,8 @@ public class FragmentTest extends MyBaseFragment implements XCollapsingToolbarLa
             getStatusBarConfig().statusBarDarkFont(false).init();
         }
     }
-
+     /*
+     * */
     private void currentTime() {
         Log.i(" : shown= >>> ", Thread.currentThread().getName());
 

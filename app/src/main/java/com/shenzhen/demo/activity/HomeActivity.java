@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.shenzhen.demo.R;
 import com.shenzhen.demo.base.BaseFragmentAdapter;
+import com.shenzhen.demo.base.HaHa;
 import com.shenzhen.demo.base.MyBaseActivivty;
 import com.shenzhen.demo.fragment.FragmentA;
 import com.shenzhen.demo.fragment.FragmentB;
@@ -19,6 +20,7 @@ import com.shenzhen.demo.fragment.FragmentTest;
 
 
 import org.greenrobot.eventbus.EventBus;
+
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -156,7 +158,7 @@ public  class HomeActivity extends MyBaseActivivty  implements ViewPager.OnPageC
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(String s) {
+    public void onMessageEvent(HaHa haHa) {
         Log.d( "home结束了", "..."+Toast.LENGTH_SHORT);
         finish();
     }

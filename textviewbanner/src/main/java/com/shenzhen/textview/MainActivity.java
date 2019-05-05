@@ -162,13 +162,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        textView.stopAutoScroll();
-    }
-
-
     private void weixin() throws JSONException {
         //{"resultStatus":0,"msg":"SUCCESS","resultData":{"content":"{\"appid\":\"wx2ed6ff9d4a4f89a9\",\"noncestr\":\"UWBAVtZdqrEWaICE\",\"package\":\"Sign=WXPay\",\"partnerid\":\"1501213791\",\"prepayid\":\"wx1809355094899803e46bd1c41127181708\",\"sign\":\"00E77DD1A64FB96BE71D306697DDBB48\",\"timestamp\":1555551350}"}}
         String content = "{\"appid\":\"wx2ed6ff9d4a4f89a9\",\"noncestr\":\"UWBAVtZdqrEWaICE\",\"package\":\"Sign=WXPay\",\"partnerid\":\"1501213791\",\"prepayid\":\"wx1809355094899803e46bd1c41127181708\",\"sign\":\"00E77DD1A64FB96BE71D306697DDBB48\",\"timestamp\":1555551350}";
@@ -272,6 +265,12 @@ public class MainActivity extends AppCompatActivity {
         mTvBanner3.startViewAnimator();
         mTvBanner4.startViewAnimator();
         textView.startAutoScroll();
+
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        textView.stopAutoScroll();
     }
 
     @Override
@@ -286,4 +285,15 @@ public class MainActivity extends AppCompatActivity {
     }
     /*
      * {"resultStatus":0,"msg":"SUCCESS","resultData":{"content":"{\"appid\":\"wx2ed6ff9d4a4f89a9\",\"noncestr\":\"wfA8PP8xC6EpqDv5\",\"package\":\"Sign=WXPay\",\"partnerid\":\"1501213791\",\"prepayid\":\"wx171558282285054a672ba6c20967197465\",\"sign\":\"F57AF4E6197DBB99BFDC83014989F32A\",\"timestamp\":1555487908}"}}*/
+
+/*
+* CBCAA
+* BDCBD
+* */
+/*像素
+ftp服务器
+Get
+* #
+* */
+
 }

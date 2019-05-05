@@ -173,6 +173,8 @@
                 android:layout_marginTop="50dp"
                 android:text="自动水平滚动--从右到左轮播" />
 
+               <!-- app:setDirection 属相 默认右向左移动   -->
+
             <com.shenzhen.textview.view.TextBannerView
                 android:id="@+id/tv_banner"
                 android:layout_width="match_parent"
@@ -180,6 +182,7 @@
                 android:background="#cc8ac6"
                 app:setFlags="strike"
                 app:setGravity="right"
+                app:setDirection="right_to_left"
                 app:setTextColor="#fff"
                 app:setTypeface="italic" />
 

@@ -6,7 +6,7 @@ android {
 
 
     defaultConfig {
-        applicationId "com.bjypt.vipcard" //"com.shenzhen.textview"
+        applicationId "com.shenzhen.textview" //"com.shenzhen.textview"//com.bjypt.vipcard
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1

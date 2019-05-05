@@ -3,6 +3,7 @@ package com.shenzhen.demo.activity;
 import android.view.View;
 
 import com.shenzhen.demo.R;
+import com.shenzhen.demo.base.HaHa;
 import com.shenzhen.demo.base.MyBaseActivivty;
 
 import org.greenrobot.eventbus.EventBus;
@@ -33,8 +34,9 @@ public class TestActivity  extends MyBaseActivivty{
         eventBus();
     }
 
-    private void eventBus() {
-        String s = new String();
-        EventBus.getDefault().post(s);
+    public void eventBus() {
+       // String s = new String();
+        HaHa haHa = new HaHa();
+        EventBus.getDefault().post(haHa);
     }
 }
