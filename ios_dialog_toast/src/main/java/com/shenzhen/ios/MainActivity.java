@@ -9,7 +9,10 @@ import android.widget.Toast;
 
 import com.mumu.dialog.MMAlertDialog;
 
-
+ /*
+ * 自定义的dialog，loading ,toast
+ *
+ * */
 public class MainActivity extends BaseActivity implements View.OnClickListener{
 
 
@@ -33,6 +36,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         button6 = findViewById(R.id.button6);
         button7 = findViewById(R.id.button7);
         button8 = findViewById(R.id.button8);
+        /*
+        祖册点击事件
+        * */
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
         button3.setOnClickListener(this);
@@ -41,7 +47,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         button6.setOnClickListener(this);
         button7.setOnClickListener(this);
         button8.setOnClickListener(this);
-        
+
     }
 
     private void showDialog1() {
@@ -139,7 +145,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 });
     }
 
-
+  /*
+  * 点击事件
+  * */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

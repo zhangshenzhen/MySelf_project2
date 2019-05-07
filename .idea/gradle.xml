@@ -9,6 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/HttpNetWork" />
+            <option value="$PROJECT_DIR$/MyDragPhotoView" />
             <option value="$PROJECT_DIR$/RandomTextView" />
             <option value="$PROJECT_DIR$/RecycleCountDownTime" />
             <option value="$PROJECT_DIR$/StickyNavLayout" />
