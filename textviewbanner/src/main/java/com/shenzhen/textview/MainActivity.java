@@ -1,30 +1,25 @@
 package com.shenzhen.textview;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.paradoxie.autoscrolltextview.VerticalTextview;
 import com.shenzhen.textview.utils.Format;
 import com.shenzhen.textview.utils.StatusBarUtil;
-import com.shenzhen.textview.view.ITextBannerItemClickListener;
 import com.shenzhen.textview.view.TextBannerView;
 import com.shenzhen.textview.wxapi.WXHelper;
+import com.superluo.textbannerlibrary.ITextBannerItemClickListener;
 import com.tencent.mm.opensdk.modelpay.PayReq;
-
 
 import org.json.JSONException;
 import org.json.JSONObject;
