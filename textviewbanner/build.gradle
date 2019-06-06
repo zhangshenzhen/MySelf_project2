@@ -22,11 +22,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility = '1.8'
-        targetCompatibility = '1.8'
-    }
-    buildToolsVersion = '28.0.3'
 
 }
 
@@ -46,8 +41,6 @@ dependencies {
 
 
     implementation 'com.github.paradoxie:AutoVerticalTextview:0.1'
-    implementation 'com.superluo:textbannerview:1.0.5'
-
 }
 
 /*publish {
@@ -58,5 +51,5 @@ dependencies {
     publishVersion = '1.0.5'
     desc = 'this is a nice TextBannerView description for a project'
     website = 'https://github.com/zsml2016/TextBannerView'
-    compile 'com.superluo:textbannerview:1.0.5'
+//compile 'com.superluo:textbannerview:1.0.5'
 }*/
