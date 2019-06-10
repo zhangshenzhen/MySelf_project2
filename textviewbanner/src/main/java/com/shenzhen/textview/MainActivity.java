@@ -1,30 +1,28 @@
 package com.shenzhen.textview;
 
-import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.paradoxie.autoscrolltextview.VerticalTextview;
 import com.shenzhen.textview.utils.Format;
 import com.shenzhen.textview.utils.StatusBarUtil;
-import com.shenzhen.textview.view.ITextBannerItemClickListener;
 import com.shenzhen.textview.view.TextBannerView;
 import com.shenzhen.textview.wxapi.WXHelper;
+import com.superluo.textbannerlibrary.ITextBannerItemClickListener;
 import com.tencent.mm.opensdk.modelpay.PayReq;
-
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -102,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("移动", ":" + verticalOffset);                                                                                          //8.0f 修改简便灵敏度
                 toolbar.setBackgroundColor(changeAlpha(getResources().getColor(R.color.colorPrimary), Math.abs(verticalOffset * 1.0f) / (8.0f * appBarLayout.getTotalScrollRange())));
                 toolbar.setTitleTextColor(changeAlpha(getResources().getColor(R.color.colorBlack), Math.abs(verticalOffset * 1.0f) / (1.0f * appBarLayout.getTotalScrollRange())));
-
+              //  startDevelopmentActivity();
                 //动态修改悬浮按钮大小
                 //FloatingActionButton.setCustomSize(FloatingActionButton.getSize()*verticalOffset/appBarLayout.getTotalScrollRange());
             }
@@ -112,12 +110,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(MainActivity.this, "调用了 "+!isWx, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "调用了 " + !isWx, Toast.LENGTH_SHORT).show();
                 if (!isWx) {
                     isWx = !isWx;
                     StartPayFor startPayFor = new StartPayFor(MainActivity.this);
                     startPayFor.startAlipay();
-                 } else {
+                } else {
                     try {
                         isWx = !isWx;
                         weixin();
@@ -267,6 +265,7 @@ public class MainActivity extends AppCompatActivity {
         textView.startAutoScroll();
 
     }
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -283,17 +282,31 @@ public class MainActivity extends AppCompatActivity {
         mTvBanner3.stopViewAnimator();
         mTvBanner4.stopViewAnimator();
     }
-    /*
-     * {"resultStatus":0,"msg":"SUCCESS","resultData":{"content":"{\"appid\":\"wx2ed6ff9d4a4f89a9\",\"noncestr\":\"wfA8PP8xC6EpqDv5\",\"package\":\"Sign=WXPay\",\"partnerid\":\"1501213791\",\"prepayid\":\"wx171558282285054a672ba6c20967197465\",\"sign\":\"F57AF4E6197DBB99BFDC83014989F32A\",\"timestamp\":1555487908}"}}*/
 
-/*
-* CBCAA
-* BDCBD
-* */
-/*像素
-ftp服务器
-Get
-* #
-* */
+    /**
+     * 打开开发者模式界面
+     */
+    private void startDevelopmentActivity() {
+        try {
+            Intent intent = new Intent(Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS);
+            startActivity(intent);
+        } catch (Exception e) {
+            try {
+                ComponentName componentName = new ComponentName("com.android.settings", "com.android.settings.DevelopmentSettings");
+                Intent intent = new Intent();
+                intent.setComponent(componentName);
+                intent.setAction("android.intent.action.View");
+                startActivity(intent);
+            } catch (Exception e1) {
+                try {
+                    Intent intent = new Intent("com.android.settings.APPLICATION_DEVELOPMENT_SETTINGS");
+                    startActivity(intent);
+                } catch (Exception e2) {
+                }
+            }
+        } finally {
+            finish();
+        }
+    }
 
 }
