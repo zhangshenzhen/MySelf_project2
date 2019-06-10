@@ -1,1 +1,1 @@
-include ':app', ':checkupdate', ':textviewbanner', ':cirquecontrolview', ':StickyNavLayout', ':HttpNetWork', ':ios_dialog_toast', ':MyDragPhotoView','RecycleCountDownTime','RandomTextView','randomtextviewlibrary'
+include ':app', ':checkupdate', ':textviewbanner', ':cirquecontrolview', ':StickyNavLayout', ':HttpNetWork', ':ios_dialog_toast', ':MyDragPhotoView', ':developopition','RecycleCountDownTime','RandomTextView','randomtextviewlibrary'
