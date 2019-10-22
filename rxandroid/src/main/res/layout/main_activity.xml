@@ -15,4 +15,18 @@
         android:layout_height="wrap_content"
         android:text="@string/button_run_scheduler"/>
 
+    <!--当作viewgroup 使用才能用ScrollBy 移动-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_height="match_parent"
+      >
+
+        <com.shenzhen.rxandroid.view.MoveImageview
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher" />
+    </LinearLayout>
+
 </LinearLayout>

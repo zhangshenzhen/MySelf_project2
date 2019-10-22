@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.shenzhen.rxandroid.swipeMenu.SwipeMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:swipe="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swipe_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    swipe:contentViewId="@+id/add_home_lay"
+    swipe:rightViewId="@+id/btn_delete_lay">
+
+    <RelativeLayout
+        android:id="@+id/add_home_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_launcher_background"
+        android:orientation="horizontal"
+        android:paddingLeft="35px"
+        android:paddingRight="35px">
+
+        <RelativeLayout
+            android:id="@+id/navi_type_ll"
+            android:layout_width="match_parent"
+            android:layout_height="90px"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="30px"
+            android:layout_marginBottom="30px"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/histrory_type_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="2px"
+                    android:layout_height="36px"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="26px"
+                    android:background="#FFDBDBDB" />
+
+                <ImageView
+                    android:id="@+id/iv_navi_icon_l"
+                    android:layout_width="64px"
+                    android:layout_height="64px"
+                    android:layout_marginRight="14px"
+                    android:background="@drawable/ic_launcher_background"
+                    android:contentDescription="TODO"
+                    android:scaleType="fitXY" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_address_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5px"
+                android:layout_toLeftOf="@id/histrory_type_ll"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tv_nav_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:textColor="#000000"
+                    android:textSize="36px" />
+
+                <TextView
+                    android:id="@+id/tv_nav_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_nav_name"
+                    android:layout_alignStart="@id/tv_nav_name"
+                    android:layout_alignEnd="@id/tv_nav_name"
+                    android:layout_marginTop="15px"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textColor="#7C7C7C"
+                    android:textSize="24px" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/search_type_ll"
+            android:layout_width="match_parent"
+            android:layout_height="72px"
+            android:layout_below="@+id/navi_type_ll"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="30px"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/histrory_search_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="2px"
+                    android:layout_height="36px"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="26px"
+                    android:background="#FFDBDBDB" />
+
+                <ImageView
+                    android:id="@+id/iv_search_icon_l"
+                    android:layout_width="64px"
+                    android:layout_height="64px"
+                    android:layout_marginRight="14px"
+                    android:background="@color/recycler_swipe_color_loading_color1"
+                    android:contentDescription="TODO"
+                    android:scaleType="fitXY" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_search_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/histrory_search_ll"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="10px"
+                android:layout_toRightOf="@+id/histrory_search_ll"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:textColor="#000000"
+                android:textSize="36px" />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/btn_delete_lay"
+        android:layout_width="wrap_content"
+        android:layout_height="150px"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="92dp"
+            android:layout_height="match_parent"
+            android:background="#D50000"
+            android:text="删除"
+            android:textColor="@android:color/white"
+            android:textSize="21sp" />
+
+    </LinearLayout>
+</com.shenzhen.rxandroid.swipeMenu.SwipeMenuLayout>

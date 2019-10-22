@@ -15,6 +15,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
+
 public class MainActivity extends Activity {
     private static final String TAG = "RxAndroidSamples";
 
@@ -49,7 +50,7 @@ public class MainActivity extends Activity {
 
     void onRunSchedulerExampleButtonClicked() {
         disposables.add(sampleObservable()
-                // Run on a background thread
+                //Run on a background thread
                 .subscribeOn(Schedulers.io())
                 // Be notified on the main thread
                 .observeOn(AndroidSchedulers.mainThread())
@@ -82,3 +83,5 @@ public class MainActivity extends Activity {
         });
     }
 }
+
+
