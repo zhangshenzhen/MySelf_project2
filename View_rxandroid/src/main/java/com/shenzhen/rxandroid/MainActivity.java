@@ -6,6 +6,8 @@ import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 
+import com.shenzhen.rxandroid.view.CircleImageView;
+
 import java.util.concurrent.Callable;
 
 import io.reactivex.Observable;
@@ -18,13 +20,15 @@ import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends Activity {
     private static final String TAG = "RxAndroidSamples";
-
+    private CircleImageView mOriginView;
+    private CircleImageView mReflectView;
     private final CompositeDisposable disposables = new CompositeDisposable();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
+
         findViewById(R.id.button_run_scheduler).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,6 +44,23 @@ public class MainActivity extends Activity {
                 onRunSchedulerExampleButtonClicked();
             }
         });
+
+       //自定义倒影的图片
+        initCircleImageView();
+
+    }
+
+    private void initCircleImageView() {
+        mOriginView = findViewById(R.id.view_circle_origin);
+        mOriginView.setReflect(true);
+        mOriginView.setVirtual(false);
+        mOriginView.setImageResource(R.drawable.ic_launcher);
+
+        mReflectView = findViewById(R.id.view_circle_reflect);
+        mReflectView.setVirtual(true);
+        mReflectView.setReflect(false);
+        mReflectView.setImageResource(R.drawable.ic_launcher);
+
     }
 
     @Override

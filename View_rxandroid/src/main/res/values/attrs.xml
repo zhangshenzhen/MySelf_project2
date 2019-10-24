@@ -22,4 +22,27 @@
         <attr name="contentViewId" format="reference"/>
     </declare-styleable>
 
+
+
+    <declare-styleable name="CircleImageView">
+        <attr name="reflect" format="boolean"/>
+        <attr name="virtural" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="CircleSeekBar">
+        <attr name="progress_width" format="dimension" />
+        <attr name="knob_width" format="dimension" />
+        <attr name="track_area" format="dimension" />
+        <attr name="bg_color" format="color" />
+        <attr name="knob_color" format="color" />
+        <attr name="position" format="integer" />
+        <attr name="duration" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="FrequencyView">
+        <attr name="freq_count" format="integer" />
+        <attr name="freq_width" format="dimension" />
+        <attr name="freq_offset" format="dimension" />
+        <attr name="freq_color" format="color" />
+    </declare-styleable>
 </resources>
