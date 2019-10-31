@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    tools:context=".CircleSeekBarActivity">
+
+
+    <com.shenzhen.rxandroid.view.CircleSeekBar
+        android:id="@+id/view_seek_bar"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="30dp"
+        app:duration="100"
+        app:position="60"
+        app:bg_color="#ff0000"
+        app:progress_width="8dp" />
+
+
+
+    <com.shenzhen.rxandroid.view.FrequencyView
+        android:id="@+id/view_frequency"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        app:freq_color="@android:color/holo_red_dark"
+        app:freq_count="5"
+        app:freq_offset="4dp"
+        app:freq_width="5dp"
+       />
+
+
+</LinearLayout>

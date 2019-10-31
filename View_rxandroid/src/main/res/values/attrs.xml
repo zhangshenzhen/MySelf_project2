@@ -45,4 +45,11 @@
         <attr name="freq_offset" format="dimension" />
         <attr name="freq_color" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="MyMatrix">
+        <attr name="istranslate" format="boolean"/>
+        <attr name="isScale" format="boolean"/>
+        <attr name="isRotate" format="boolean"/>
+        <attr name="isshape" format="boolean"/>
+    </declare-styleable>
 </resources>

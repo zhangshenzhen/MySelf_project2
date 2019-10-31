@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.shenzhen.rxandroid.view.CircleImageView;
+import com.shenzhen.rxandroid.view.MyMatrix;
 
 import java.util.concurrent.Callable;
 
@@ -47,7 +48,17 @@ public class MainActivity extends Activity {
 
        //自定义倒影的图片
         initCircleImageView();
+         initMyMatrixView();//
+    }
 
+    private void initMyMatrixView() {
+        //https://blog.csdn.net/MonaLisaTearr/article/details/80177726
+        MyMatrix translaye = findViewById(R.id.view_translate);
+       // translaye.setTranslate(true);//平移
+        translaye.setScale(false);//平移 缩放
+        translaye.setRotate(true);// 平移旋转
+        translaye.setIsshape(true);
+        translaye.setImageResource(R.mipmap.pic8);
     }
 
     private void initCircleImageView() {
