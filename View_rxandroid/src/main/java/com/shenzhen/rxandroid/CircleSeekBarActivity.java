@@ -15,7 +15,9 @@ public class CircleSeekBarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_circle_seek_bar);
 
        CircleSeekBar circless =  findViewById(R.id.view_seek_bar);
-       circless.setProgress(80);
+       circless.setMax(100);
+       circless.setProgress(90);
+       circless.setProgressWidth(6);
 
         FrequencyView view_frequency = findViewById(R.id.view_frequency);
         view_frequency.setmFreqCount(6);

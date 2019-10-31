@@ -1,6 +1,7 @@
 package com.shenzhen.rxandroid.view;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -65,7 +66,7 @@ public class CircleSeekBar extends View {
         mProgressWidth = typedArray.getDimensionPixelSize(R.styleable.CircleSeekBar_progress_width, 6);
         mKnobWidth = typedArray.getDimensionPixelSize(R.styleable.CircleSeekBar_knob_width, mProgressWidth * 2);
         mTrackArea = typedArray.getDimensionPixelSize(R.styleable.CircleSeekBar_track_area, mProgressWidth * 2);
-        mBgColor = typedArray.getColor(R.styleable.CircleSeekBar_bg_color, Color.RED);
+        mBgColor = typedArray.getColor(R.styleable.CircleSeekBar_bg_color, Color.GREEN);
         mKnobColor = typedArray.getColor(R.styleable.CircleSeekBar_knob_color, Color.BLUE);
         mProgress = typedArray.getInt(R.styleable.CircleSeekBar_position, 0);
         mDuration = typedArray.getInt(R.styleable.CircleSeekBar_duration, 0);
@@ -74,26 +75,33 @@ public class CircleSeekBar extends View {
             mProgressWidth = 6;
             mKnobWidth = mProgressWidth * 2;
             mTrackArea = mProgressWidth * 2;
-            mBgColor = Color.GRAY;
-            mKnobColor = Color.RED;
+            mBgColor = Color.GREEN;
+            mKnobColor = Color.BLUE;
             mProgress = 0;
             mDuration = 0;
         }
+
+        /*
+        * Paint.Style.FILL：填充内部
+        * Paint.Style.FILL_AND_STROKE  ：填充内部和描边
+        * Paint.Style.STROKE  ：描边
+        * */
+
         //创建抗锯齿画笔
         mProgressPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        //设置画笔的样式为描边
+        //设置画笔的样式为描边 (描边就是空心)
         mProgressPaint.setStyle(Paint.Style.STROKE);
         //设置画笔的图像样式为矩形 （前提需设置画笔样式为STROKE或FILL_AND_STROKE）
         mProgressPaint.setStrokeCap(Paint.Cap.SQUARE);
 
         //创建抗锯齿滑块的画笔
         mKnobPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        // 设置画笔样式为填充
+        // 设置画笔样式为填充    (描边就是空心)
         mKnobPaint.setStyle(Paint.Style.FILL);
         // 创建进度条可绘制的范围
         mProgressRectF = new RectF();
         // 创建默认圆形渐变着色器
-        mSweepGradient = new SweepGradient(getWidth() / 2, getHeight() / 2, Color.YELLOW, Color.YELLOW);
+        mSweepGradient = new SweepGradient(getWidth() / 2, getHeight() / 2,  Color.YELLOW,Color.RED);
         // 初始化进度条扫过的角度
         mSweepAngle = (float) mProgress / mDuration * 360;
     }
@@ -144,9 +152,10 @@ public class CircleSeekBar extends View {
      */
     private void drawProgress(Canvas canvas) {
         //创建matrix
-        canvas.rotate(90, (float) getWidth() / 2, (float) getHeight() / 2);
-        mProgressPaint.setShader(mSweepGradient);
-        mProgressPaint.setColor(Color.RED);
+        canvas.rotate(0, (float) getWidth() / 2, (float) getHeight() / 2);
+         //二者选一
+      //  mProgressPaint.setShader(mSweepGradient);
+       mProgressPaint.setColor(Color.RED);
 
         mProgressPaint.setAlpha(255);
         canvas.drawArc(mProgressRectF, 0, mSweepAngle, false, mProgressPaint);
@@ -191,10 +200,12 @@ public class CircleSeekBar extends View {
         mSweepGradient = gradient;
     }
     public void setProgressWidth(int width) {
-        mProgressWidth = width;
+        mProgressWidth = dp2px(width);
+        invalidate();
     }
     public void setKnobWidth(int width) {
         mKnobWidth = width;
+        invalidate();
     }
     public void setTrackArea(int area) {
         mTrackArea = area;
@@ -206,5 +217,7 @@ public class CircleSeekBar extends View {
         mKnobColor = color;
     }
 
-
+    public  int dp2px(float dpValue) {
+        return (int) (0.5f + dpValue * Resources.getSystem().getDisplayMetrics().density);
+    }
 }
